@@ -2,6 +2,48 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: argocd-application-controller-admin-binding
+rules:
+  # Pods
+  - apiGroups: [""]
+    resources: ["pods", "endpoints"]
+    verbs: ["get", "list", "watch"]
+  
+  # Traefik middlewares
+  - apiGroups: ["traefik.io"]
+    resources: ["middlewares"]
+    verbs: ["get", "list", "watch"]
+
+  # Services
+  - apiGroups: [""]
+    resources: ["services"]
+    verbs: ["get", "list", "watch"]
+
+  # Deployments
+  - apiGroups: ["apps"]
+    resources: ["deployments"]
+    verbs: ["get", "list", "watch"]
+
+  # ConfigMaps and Secrets
+  - apiGroups: [""]
+    resources: ["configmaps", "secrets"]
+    verbs: ["get", "list", "watch"]
+
+  # StatefulSets, DaemonSets
+  - apiGroups: ["apps"]
+    resources: ["statefulsets", "daemonsets"]
+    verbs: ["get", "list", "watch"]
+
+  # Jobs
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["get", "list", "watch"]
+
+  # ServiceAccounts
+  - apiGroups: [""]
+    resources: ["serviceaccounts"]
+    verbs: ["get", "list", "watch"]
+
+
 subjects:
   - kind: ServiceAccount
     name: argocd-application-controller
