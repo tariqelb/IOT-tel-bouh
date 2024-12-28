@@ -1,12 +1,13 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: argocd-admin-binding
+  name: argocd-application-controller-admin-binding
 subjects:
-  - kind: User
-    name: admin
-    apiGroup: rbac.authorization.k8s.io
+  - kind: ServiceAccount
+    name: argocd-application-controller
+    namespace: argocd
 roleRef:
   kind: ClusterRole
   name: admin
   apiGroup: rbac.authorization.k8s.io
+
