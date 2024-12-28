@@ -10,7 +10,7 @@ rules:
 
   # Traefik middlewares and services
   - apiGroups: ["traefik.io"]
-    resources: ["middlewares", "traefikservices"]
+    resources: ["*"]
     verbs: ["get", "list", "watch"]
 
   # Services
