@@ -42,3 +42,8 @@ rules:
   - apiGroups: [""]
     resources: ["serviceaccounts"]
     verbs: ["get", "list", "watch"]
+
+  # Admission Policy Bindings
+  - apiGroups: ["admissionregistration.k8s.io"]
+    resources: ["validatingadmissionpolicybindings"]
+    verbs: ["get", "list", "watch"]
