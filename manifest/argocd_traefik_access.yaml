@@ -8,7 +8,7 @@ rules:
     resources: ["pods"]
     verbs: ["get", "list", "watch"]
   
-  #
+  # Traefik middlewares
   - apiGroups: ["traefik.io"]
     resources: ["middlewares"]
     verbs: ["get", "list", "watch"]
@@ -41,6 +41,11 @@ rules:
   # ServiceAccounts
   - apiGroups: [""]
     resources: ["serviceaccounts"]
+    verbs: ["get", "list", "watch"]
+
+  # K3S Addons
+  - apiGroups: ["k3s.cattle.io"]
+    resources: ["addons"]
     verbs: ["get", "list", "watch"]
 
 ---
