@@ -8,9 +8,9 @@ rules:
     resources: ["pods", "endpoints"]
     verbs: ["get", "list", "watch"]
 
-  # Traefik middlewares
+  # Traefik middlewares and services
   - apiGroups: ["traefik.io"]
-    resources: ["middlewares"]
+    resources: ["middlewares", "traefikservices"]
     verbs: ["get", "list", "watch"]
 
   # Services
@@ -42,4 +42,3 @@ rules:
   - apiGroups: [""]
     resources: ["serviceaccounts"]
     verbs: ["get", "list", "watch"]
-
