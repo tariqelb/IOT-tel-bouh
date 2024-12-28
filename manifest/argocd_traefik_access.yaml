@@ -3,17 +3,37 @@ kind: ClusterRole
 metadata:
   name: argocd-application-controller-access
 rules:
-  # Traefik middlewaretcps permissions
-  - apiGroups: ["traefik.containo.us"]
-    resources: ["middlewaretcps"]
+  # Pods
+  - apiGroups: [""]
+    resources: ["pods"]
     verbs: ["get", "list", "watch"]
-  
-  # Batch jobs permissions
+
+  # Services
+  - apiGroups: [""]
+    resources: ["services"]
+    verbs: ["get", "list", "watch"]
+
+  # Deployments
+  - apiGroups: ["apps"]
+    resources: ["deployments"]
+    verbs: ["get", "list", "watch"]
+
+  # ConfigMaps and Secrets
+  - apiGroups: [""]
+    resources: ["configmaps", "secrets"]
+    verbs: ["get", "list", "watch"]
+
+  # StatefulSets, DaemonSets
+  - apiGroups: ["apps"]
+    resources: ["statefulsets", "daemonsets"]
+    verbs: ["get", "list", "watch"]
+
+  # Jobs
   - apiGroups: ["batch"]
     resources: ["jobs"]
     verbs: ["get", "list", "watch"]
 
-  # ServiceAccount permissions
+  # ServiceAccounts
   - apiGroups: [""]
     resources: ["serviceaccounts"]
     verbs: ["get", "list", "watch"]
