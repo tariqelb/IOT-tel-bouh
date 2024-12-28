@@ -13,6 +13,11 @@ rules:
     resources: ["jobs"]
     verbs: ["get", "list", "watch"]
 
+  # ServiceAccount permissions
+  - apiGroups: [""]
+    resources: ["serviceaccounts"]
+    verbs: ["get", "list", "watch"]
+
 ---
 
 apiVersion: rbac.authorization.k8s.io/v1
