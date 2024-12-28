@@ -3,52 +3,33 @@ kind: ClusterRole
 metadata:
   name: argocd-application-controller-admin
 rules:
-  # Pods and Endpoints
   - apiGroups: [""]
     resources: ["*"]
-    verbs: ["get", "list", "watch"]
-
-  # Traefik middlewares and services
+    verbs: ["*"]  # Grant all verbs (get, list, watch, create, update, delete, etc.)
+  - apiGroups: ["apps"]
+    resources: ["*"]
+    verbs: ["*"]
+  - apiGroups: ["batch"]
+    resources: ["*"]
+    verbs: ["*"]
+  - apiGroups: ["extensions"]
+    resources: ["*"]
+    verbs: ["*"]
   - apiGroups: ["traefik.io"]
     resources: ["*"]
-    verbs: ["get", "list", "watch"]
-
-  # Services
-  - apiGroups: [""]
-    resources: ["services"]
-    verbs: ["get", "list", "watch"]
-
-  # Deployments
-  - apiGroups: ["apps"]
-    resources: ["deployments"]
-    verbs: ["get", "list", "watch"]
-
-  # ConfigMaps and Secrets
-  - apiGroups: [""]
-    resources: ["configmaps", "secrets"]
-    verbs: ["get", "list", "watch"]
-
-  # StatefulSets, DaemonSets
-  - apiGroups: ["apps"]
-    resources: ["statefulsets", "daemonsets"]
-    verbs: ["get", "list", "watch"]
-
-  # Jobs
-  - apiGroups: ["batch"]
-    resources: ["jobs"]
-    verbs: ["get", "list", "watch"]
-
-  # ServiceAccounts
-  - apiGroups: [""]
-    resources: ["serviceaccounts"]
-    verbs: ["get", "list", "watch"]
-
-  # Admission Policy Bindings
+    verbs: ["*"]
   - apiGroups: ["admissionregistration.k8s.io"]
-    resources: ["validatingadmissionpolicybindings"]
-    verbs: ["get", "list", "watch"]
-
-    # ResourceQuotas
-  - apiGroups: [""]
-    resources: ["resourcequotas"]
-    verbs: ["get", "list", "watch"]
+    resources: ["*"]
+    verbs: ["*"]
+  - apiGroups: ["networking.k8s.io"]
+    resources: ["*"]
+    verbs: ["*"]
+  - apiGroups: ["rbac.authorization.k8s.io"]
+    resources: ["*"]
+    verbs: ["*"]
+  - apiGroups: ["storage.k8s.io"]
+    resources: ["*"]
+    verbs: ["*"]
+  - apiGroups: ["apiextensions.k8s.io"]
+    resources: ["*"]
+    verbs: ["*"]
