@@ -3,51 +3,42 @@ kind: ClusterRole
 metadata:
   name: argocd-application-controller-access
 rules:
-  # Pods
   - apiGroups: [""]
-    resources: ["pods"]
+    resources: ["*"]
     verbs: ["get", "list", "watch"]
-  
-  # Traefik middlewares
-  - apiGroups: ["traefik.io"]
-    resources: ["middlewares"]
-    verbs: ["get", "list", "watch"]
-
-  # Services
-  - apiGroups: [""]
-    resources: ["services"]
-    verbs: ["get", "list", "watch"]
-
-  # Deployments
   - apiGroups: ["apps"]
-    resources: ["deployments"]
+    resources: ["*"]
     verbs: ["get", "list", "watch"]
-
-  # ConfigMaps and Secrets
-  - apiGroups: [""]
-    resources: ["configmaps", "secrets"]
-    verbs: ["get", "list", "watch"]
-
-  # StatefulSets, DaemonSets
-  - apiGroups: ["apps"]
-    resources: ["statefulsets", "daemonsets"]
-    verbs: ["get", "list", "watch"]
-
-  # Jobs
   - apiGroups: ["batch"]
-    resources: ["jobs"]
+    resources: ["*"]
     verbs: ["get", "list", "watch"]
-
-  # ServiceAccounts
-  - apiGroups: [""]
-    resources: ["serviceaccounts"]
+  - apiGroups: ["certificates.k8s.io"]
+    resources: ["*"]
     verbs: ["get", "list", "watch"]
-
-  # K3S Addons
+  - apiGroups: ["traefik.io"]
+    resources: ["*"]
+    verbs: ["get", "list", "watch"]
   - apiGroups: ["k3s.cattle.io"]
-    resources: ["addons"]
+    resources: ["*"]
     verbs: ["get", "list", "watch"]
-
+  - apiGroups: ["extensions"]
+    resources: ["*"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["rbac.authorization.k8s.io"]
+    resources: ["*"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["networking.k8s.io"]
+    resources: ["*"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["policy"]
+    resources: ["*"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["storage.k8s.io"]
+    resources: ["*"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["apps.openshift.io"]
+    resources: ["*"]
+    verbs: ["get", "list", "watch"]
 ---
 
 apiVersion: rbac.authorization.k8s.io/v1
