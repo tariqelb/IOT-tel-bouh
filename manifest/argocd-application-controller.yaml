@@ -5,7 +5,7 @@ metadata:
 rules:
   # Pods and Endpoints
   - apiGroups: [""]
-    resources: ["pods", "endpoints"]
+    resources: ["pods", "endpoints", "podtemplates"]]
     verbs: ["get", "list", "watch"]
 
   # Traefik middlewares and services
